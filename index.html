@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+	<title>Angular JS & Chart.js　バインド</title>
+	<script src="script/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+</head>
+<body>
+	<div ng-controller="formCtrl as form">
+		<form name="myForm" novalidate>
+			<p ng-repeat="item in form.items">
+				<ng-form name="formItem">
+					月:<input type="number" ng-change="form.change(formItem,$index);" ng-required="true" min="1" max="1000" ng-pattern="/^[0-9]+$/" ng-model="item.num">
+					<br>
+					<span ng-show="!formItem.$valid">1～1000間で<br>入力して下さい。</span>
+				</ng-form>
+			</p>
+		</form>
+	<canvas id="myCan" width="600" height="400"></canvas>
+	</div>
+	
+	<!--angular-->
+	<script src="./app.js"></script>
+</body>
+</html>
